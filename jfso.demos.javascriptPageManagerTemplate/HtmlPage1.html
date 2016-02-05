@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-2.2.0.js"></script>
+    <script src="Scripts/PageManager.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var options = {
+                actions: [
+                    {
+                        name: "getClientContracts",
+                        address: "http://???????"
+                    },
+                    {
+                        name: "getClientContracts",
+                        address: "http://???????"
+                    },
+                ],
+                otherProperty: ""
+            };
+
+            var PageManager = PageManagerSingleton.init(options);
+
+            PageManager.PageLoad();
+
+
+
+        });
+    </script>
+</body>
+</html>
