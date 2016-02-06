@@ -21,17 +21,31 @@
         $(document).ready(function () {
 
             var options = {
-                actions: [
+                actions: {
+                    actionName1: {
+                        address: "http://???????1",
+                        },
+                    actionName2: {
+                        address: "http://???????1",
+                    },
+                },
+                otherProperty: "",
+                Resources: [
                     {
-                        name: "getClientContracts",
-                        address: "http://???????"
+                        section1Handler:
+                            {
+                                text1: "betterText1",
+                                text2: "betterText2"
+                            }
                     },
                     {
-                        name: "getClientContracts",
-                        address: "http://???????"
+                        section2Handler:
+                            {
+                                text1: "betterText1",
+                                text2: "betterText2"
+                            }
                     },
                 ],
-                otherProperty: ""
             };
 
             var PageManager = PageManagerSingleton.init(options);
