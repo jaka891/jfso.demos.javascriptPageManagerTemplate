@@ -13,8 +13,8 @@ var PageManager = (function () {
                 async: true,
                 global: false,
                 cache: false,
-                type: options.actions.actionName1.settings.type,
-                url: options.actions.actionName1.address,
+                type: _type,
+                url: _url,
                 data: data,
                 contentType: 'application/json; charset=utf-8',
                 beforeSend: function (evt) {
@@ -129,15 +129,33 @@ var PageManager = (function () {
 
             console.log(options.actions.actionName1);
 
-            options.actions.actionName1.call("jkhg", callback, function () {
+            var data = {
+                'prop1': 'sadasd',
+                'prop2': 'dfsdf'
+            };
+
+            options.actions.actionName1.call(data, callback, function () {
 
             });
+
+            options.actions.actionName1.call(
+                data,
+                function () {
+                    alert("sucesso");
+                },
+                function () {
+                    alert("erro");
+                }
+            );
 
         }
 
         return {
             moradaControlOnclickfctn: function (callback) {
                 onclickFunction(callback);
+            },
+            preencheDados: function (callback) {
+
             }
         };
     }());
