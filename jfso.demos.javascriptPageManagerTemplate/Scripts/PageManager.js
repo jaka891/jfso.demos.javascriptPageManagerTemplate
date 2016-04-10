@@ -1,7 +1,10 @@
-﻿/* Singleton implementations: See
+﻿/* Directive */
+"use strict"
+
+/* Singleton implementations: See
  * https://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript
  */
-var PageManagerSingleton = (function () {
+var PageManager = (function () {
 
     /* ++++++++++++++++++++++++++++ Usefull Stuff Area +++++++++++++++++++++++++++ */
     var _prototype = {
@@ -90,7 +93,7 @@ var PageManagerSingleton = (function () {
                     text2: "blabla"
                 }
 
-        },
+        }
     };
 
     var options = _defaultOptions;
@@ -99,13 +102,16 @@ var PageManagerSingleton = (function () {
     /* +++++++++++++++++++++++++++ Page Load Area ++++++++++++++++++++++++++ */
 
     var _pageLoad = function () {
-        alert("1");
-        console.log(options);
+        //alert("1");
+        //console.log(options);
 
-        Section1Handler.moradaControlOnclickfctn(function () {
+        //Section1Handler.moradaControlOnclickfctn(function () {
 
-        });
+        //});
 
+
+
+        //console.log(tt);
     };
 
     /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -164,37 +170,69 @@ var PageManagerSingleton = (function () {
     /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     /* -------------------------- No touch Area -------------------------- */
 
+    // Instance stores a reference to the Singleton
+    var instance;
+
+    // Prototype
+
+    var Options = (function () {
+        function Options() { }
+
+        var optionsPrototype = {
+            actions: {},
+            otherProperty: "",
+            Resources: [],
+        };
+        //actions, otherProperty, Resources
+        return function () {
+            Options.prototype = optionsPrototype;
+            return new Options();
+        };
+    })();
+
+    var _PageManagerPrototype = {
+        Options: new Options()
+    };
+
     // PageManagerSingleton Return
-    return {
-        init: function (options) {
-            if (!instance) {
-                instance = init(options);
-            }
-            return instance;
-        }
+    return function () {
+        var output = {
+            init: _init,
+            //PageLoad: _pageLoad
+            options: options
+        };
+
+        output.prototype = _PageManagerPrototype;
+
+        return output;
     };
 
     // Get the Singleton instance if one exists
     // or create one if it doesn't
-    function init(myOptions) {
+    function _init(myOptions) {
+        
         if (myOptions == null) {
             options = _defaultOptions;
         } else {
             options = $.extend(true, _defaultOptions, myOptions);
         }
 
-        // Singleton
-        // Private methods and variables
+        var instance = this
+
+        delete instance.init;
+
+        instance.PageLoad = _pageLoad;
+        instance.reinit = function (myOptions) {
+            _init(myOptions);
+        };
+
+        //instance.prototype = _PageManagerPrototype;
 
         // Public methods and variables
-        return {
-            PageLoad: _pageLoad
-        };
+        return instance;
 
     };
 
-    // Instance stores a reference to the Singleton
-    var instance;
     /* --------------------------------------------------------------------*/
 })();
 

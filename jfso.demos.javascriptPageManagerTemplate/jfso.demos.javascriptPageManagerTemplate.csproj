@@ -73,6 +73,7 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\PageManagerv2.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
   </ItemGroup>

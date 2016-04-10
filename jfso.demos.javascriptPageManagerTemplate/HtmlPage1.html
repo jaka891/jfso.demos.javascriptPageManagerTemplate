@@ -24,7 +24,7 @@
                 actions: {
                     actionName1: {
                         address: "http://???????1",
-                        },
+                    },
                     actionName2: {
                         address: "http://???????1",
                     },
@@ -48,11 +48,88 @@
                 ],
             };
 
-            var PageManager = PageManagerSingleton.init(options);
+            var options2 = {
+                actions: {
+                    actionName1: {
+                        address: "http222221",
+                    },
+                    actionName2: {
+                        address: "http222221",
+                    },
+                },
+                otherProperty: "",
+                Resources: [
+                    {
+                        section1Handler:
+                            {
+                                text1: "2222",
+                                text2: "2222"
+                            }
+                    },
+                    {
+                        section2Handler:
+                            {
+                                text1: "2222",
+                                text2: "2222"
+                            }
+                    },
+                ],
+            };
 
-            PageManager.PageLoad();
+            //var vehiclePrototype = {
+
+            //    init: function (carModel) {
+            //        this.model = carModel;
+            //    },
+
+            //    getModel: function () {
+            //        console.log("The model of this vehicle is.." + this.model);
+            //    }
+            //};
 
 
+
+            //var options = (function () {
+            //    function Options() { }
+
+            //    var optionsPrototype = {
+            //        actions: {},
+            //        otherProperty: "",
+            //        Resources: [],
+            //    };
+            //    //actions, otherProperty, Resources
+            //    return function () {
+            //        Options.prototype = optionsPrototype;
+            //        return new Options();
+            //    };
+            //})();
+
+
+            //tt.
+
+            //var PageManager = PageManagerSingleton.init(options);
+
+            var myPageManager = new PageManager();
+
+            console.log(myPageManager);
+
+            myPageManager.init(options);
+            myPageManager.PageLoad();
+
+            console.log(myPageManager);
+
+
+            var myPageManager2 = new PageManager();
+            console.log(myPageManager2);
+
+            myPageManager2.init(options2);
+            myPageManager2.PageLoad();
+
+            console.log(myPageManager2);
+
+            //var PageManager2 = PageManagerSingleton.reinit("dd");
+
+            //PageManager2.PageLoad();
 
         });
     </script>
